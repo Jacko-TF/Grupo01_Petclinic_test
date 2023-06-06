@@ -1,4 +1,3 @@
-
 INSERT INTO
 pets (id, name, birth_date, type_id, owner_id)
 VALUES
