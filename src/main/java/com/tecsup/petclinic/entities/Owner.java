@@ -24,7 +24,7 @@ public class Owner {
     private String last_name;
 
     @Column(columnDefinition = "varchar(255)")
-    private String adress;
+    private String address;
 
     @Column(columnDefinition = "varchar(80)")
     private String city;
@@ -39,7 +39,7 @@ public class Owner {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.adress = adress;
+        this.address = adress;
         this.city = city;
         this.telephone = telephone;
     }
@@ -47,7 +47,7 @@ public class Owner {
     public Owner(String first_name, String last_name, String adress, String city, String telephone) {
         this.first_name = first_name;
         this.last_name = last_name;
-        this.adress = adress;
+        this.address = adress;
         this.city = city;
         this.telephone = telephone;
     }
