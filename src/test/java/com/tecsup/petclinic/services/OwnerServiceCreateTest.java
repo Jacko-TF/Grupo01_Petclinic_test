@@ -8,7 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
+/**
+ *
+ * @author Jacko_Tinoco
+ */
 @SpringBootTest
 @Slf4j
 public class OwnerServiceCreateTest {
@@ -32,8 +35,8 @@ public class OwnerServiceCreateTest {
         log.info("OWNER CREATED :" + ownerCreated.toString());
 
         assertNotNull(ownerCreated.getId());
-        assertEquals(OWNER_FIRST_NAME, ownerCreated.getFirst_name());
-        assertEquals(OWNER_LAST_NAME, ownerCreated.getLast_name());
+        assertEquals(OWNER_FIRST_NAME, ownerCreated.getFirstName());
+        assertEquals(OWNER_LAST_NAME, ownerCreated.getLastName());
         assertEquals(OWNER_ADRESS, ownerCreated.getAddress());
         assertEquals(OWNER_CITY, ownerCreated.getCity());
         assertEquals(OWNER_TELEFONO, ownerCreated.getTelephone());

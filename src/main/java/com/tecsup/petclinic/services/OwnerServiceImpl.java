@@ -1,13 +1,14 @@
 package com.tecsup.petclinic.services;
 
 import com.tecsup.petclinic.entities.Owner;
-import com.tecsup.petclinic.entities.Pet;
 import com.tecsup.petclinic.repositories.OwnerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+/**
+ *
+ * @author Jacko_Tinoco
+ */
 @Service
 @Slf4j
 public class OwnerServiceImpl implements OwnerService {

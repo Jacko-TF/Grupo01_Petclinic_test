@@ -17,11 +17,11 @@ public class Owner {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(columnDefinition = "varchar(30)")
-    private String first_name;
+    @Column(columnDefinition = "varchar(30)", name = "first_name")
+    private String firstName;
 
-    @Column(columnDefinition = "varchar(30)")
-    private String last_name;
+    @Column(columnDefinition = "varchar(30)", name = "last_name")
+    private String lastName;
 
     @Column(columnDefinition = "varchar(255)")
     private String address;
@@ -37,16 +37,16 @@ public class Owner {
 
     public Owner(Integer id, String first_name, String last_name, String adress, String city, String telephone) {
         this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = first_name;
+        this.lastName = last_name;
         this.address = adress;
         this.city = city;
         this.telephone = telephone;
     }
 
     public Owner(String first_name, String last_name, String adress, String city, String telephone) {
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = first_name;
+        this.lastName = last_name;
         this.address = adress;
         this.city = city;
         this.telephone = telephone;
