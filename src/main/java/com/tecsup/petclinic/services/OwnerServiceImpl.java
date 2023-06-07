@@ -28,6 +28,16 @@ public class OwnerServiceImpl implements OwnerService {
         return ownerRepository.save(owner);
     }
 
+    /**
+     *
+     * @param owner
+     * @return
+     */
+    @Override
+    public Owner update(Owner owner) {
+        return ownerRepository.save(owner);
+    }
+
     @Override
     public Iterable<Owner> findAll() {
         //

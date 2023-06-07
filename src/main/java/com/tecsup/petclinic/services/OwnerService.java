@@ -14,5 +14,12 @@ public interface OwnerService {
      */
     Owner create(Owner owner);
 
+    /**
+     *
+     * @param owner
+     * @return
+     */
+    Owner update(Owner owner);
+
     Iterable<Owner> findAll();
 }
