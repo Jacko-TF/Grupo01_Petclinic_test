@@ -1,6 +1,9 @@
 package com.tecsup.petclinic.services;
 
 import com.tecsup.petclinic.entities.Owner;
+import com.tecsup.petclinic.exception.OwnerNotFoundException;
+
+import java.util.List;
 
 /**
  *
@@ -22,4 +25,10 @@ public interface OwnerService {
     Owner update(Owner owner);
 
     Iterable<Owner> findAll();
+
+    void delete(Integer id, String firstName) throws OwnerNotFoundException;
+
+    Owner findById(Integer id) throws OwnerNotFoundException;
+
+    List<Owner> findByName(String firstName);
 }

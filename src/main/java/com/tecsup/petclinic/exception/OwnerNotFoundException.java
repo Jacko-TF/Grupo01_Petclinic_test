@@ -9,7 +9,6 @@ public class OwnerNotFoundException extends Exception{
 
     public OwnerNotFoundException(String message) {
         super(message);
-        // TODO Auto-generated constructor stub
     }
 
 }
