@@ -1,13 +1,17 @@
 package com.tecsup.petclinic.services;
 
 import com.tecsup.petclinic.entities.Owner;
+import com.tecsup.petclinic.entities.Pet;
+import com.tecsup.petclinic.exception.OwnerNotFoundException;
+import com.tecsup.petclinic.exception.PetNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 /**
  *
  * @author Jacko_Tinoco
@@ -40,6 +44,42 @@ public class OwnerServiceCreateTest {
         assertEquals(OWNER_ADRESS, ownerCreated.getAddress());
         assertEquals(OWNER_CITY, ownerCreated.getCity());
         assertEquals(OWNER_TELEFONO, ownerCreated.getTelephone());
+
+    }
+
+    @Test
+    public void testDeleteOwner() {
+
+        String OWNER_FIRST_NAME = "Jacko2";
+        String OWNER_LAST_NAME = "Tinoco2";
+        String OWNER_ADRESS = "315 Huarochiri Mayorazgo";
+        String OWNER_CITY = "Ate";
+        String OWNER_TELEFONO = "964950100";
+
+
+
+        // ------------ Create ---------------
+
+        Owner owner = new Owner(OWNER_FIRST_NAME,OWNER_LAST_NAME, OWNER_ADRESS, OWNER_CITY, OWNER_TELEFONO);
+        owner = this.ownerService.create(owner);
+        log.info("" + owner);
+
+        // ------------ Delete ---------------
+
+        try {
+            this.ownerService.delete(owner.getId());
+        } catch (OwnerNotFoundException e) {
+            fail(e.getMessage());
+        }
+
+        // ------------ Validation ---------------
+
+        try {
+            this.ownerService.findById(owner.getId());
+            assertTrue(false);
+        } catch (OwnerNotFoundException e) {
+            assertTrue(true);
+        }
 
     }
 }

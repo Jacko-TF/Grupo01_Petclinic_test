@@ -32,7 +32,6 @@ public interface PetService {
 	 * @throws PetNotFoundException
 	 */
 	void delete(Integer id) throws PetNotFoundException;
-
 	/**
 	 * 
 	 * @param id
