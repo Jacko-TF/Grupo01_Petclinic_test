@@ -1,9 +1,7 @@
 package com.tecsup.petclinic.services;
 
 import com.tecsup.petclinic.entities.Owner;
-import com.tecsup.petclinic.entities.Pet;
 import com.tecsup.petclinic.exception.OwnerNotFoundException;
-import com.tecsup.petclinic.exception.PetNotFoundException;
 import com.tecsup.petclinic.repositories.OwnerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -52,16 +50,34 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    public void delete(Integer id, String firstName) throws OwnerNotFoundException {
+    public void delete(String firstName) throws OwnerNotFoundException {
+        deleteByName(firstName);
+    }
+
+    @Override
+    public void deleteById(Integer id) throws OwnerNotFoundException {
         Owner owner = findById(id);
         ownerRepository.delete(owner);
+    }
+
+    @Override
+    public void deleteByName(String firstName) throws OwnerNotFoundException {
+        List<Owner> owners = findByFirstName(firstName);
+
+        if (owners.isEmpty()) {
+            throw new OwnerNotFoundException("Registro no encontrado...!");
+        }
+
+        for (Owner owner : owners) {
+            ownerRepository.delete(owner);
+        }
     }
 
     @Override
     public Owner findById(Integer id) throws OwnerNotFoundException {
         Optional<Owner> owner = ownerRepository.findById(id);
 
-        if ( !owner.isPresent())
+        if (!owner.isPresent())
             throw new OwnerNotFoundException("Record not found...!");
 
         return owner.get();
@@ -70,6 +86,11 @@ public class OwnerServiceImpl implements OwnerService {
     @Override
     public List<Owner> findByName(String firstName) {
         return null;
+    }
+
+    @Override
+    public List<Owner> findByFirstName(String firstName) {
+        return ownerRepository.findByFirstName(firstName);
     }
 
 }

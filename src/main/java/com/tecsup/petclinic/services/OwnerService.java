@@ -26,9 +26,15 @@ public interface OwnerService {
 
     Iterable<Owner> findAll();
 
-    void delete(Integer id, String firstName) throws OwnerNotFoundException;
+    void delete(String firstName) throws OwnerNotFoundException;
+
+    void deleteById(Integer id) throws OwnerNotFoundException;
+
+    void deleteByName(String firstName) throws OwnerNotFoundException;
 
     Owner findById(Integer id) throws OwnerNotFoundException;
 
     List<Owner> findByName(String firstName);
+
+    List<Owner> findByFirstName(String firstName);
 }
